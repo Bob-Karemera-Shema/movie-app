@@ -1,24 +1,26 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getMovies } from "../store/moviesSlice";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const MovieList = () => {
-  const dispatch = useDispatch();
-  const { movies, status } = useSelector((state: any) => state.movies);
+const MovieDetail = () => {
+  const { id } = useParams();
+  const [movie, setMovie] = useState<any>(null);
 
   useEffect(() => {
-    dispatch(getMovies() as any);
-  }, [dispatch]);
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+    )
+      .then((res) => res.json())
+      .then(setMovie);
+  }, [id]);
 
-  return (
+  return movie ? (
     <div>
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p>Failed to fetch movies.</p>}
-      {movies.map((movie: any) => (
-        <div key={movie.id}>{movie.title}</div>
-      ))}
+      <h1>{movie.title}</h1>
+      <p>{movie.overview}</p>
     </div>
+  ) : (
+    <p>Loading...</p>
   );
 };
 
-export default MovieList;
+export default MovieDetail;
