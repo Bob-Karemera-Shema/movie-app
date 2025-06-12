@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { Grid, TextField } from "@mui/material";
 
 const MovieList = () => {
   const [query, setQuery] = useState("");
@@ -9,17 +10,22 @@ const MovieList = () => {
 
   return (
     <>
-      <input
-        placeholder="Search movies..."
+      <TextField
+        label="Search"
+        variant="outlined"
+        fullWidth
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        sx={{ mb: 2 }}
       />
-      <div>
-        {
-          filteredMovies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-      </div></>
+      <Grid container spacing={2}>
+        {filteredMovies.map((movie) => (
+          <Grid item key={movie.id}>
+            <MovieCard movie={movie} />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   );
 };
 
