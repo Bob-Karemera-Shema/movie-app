@@ -1,7 +1,8 @@
 import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+import type { Movie } from "../types/types";
 
 interface Props {
-    movie: { title: string; poster_path: string };
+    movie: Movie;
 }
 
 const MovieCard = ({ movie }: Props) => (

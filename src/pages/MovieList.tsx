@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import { Grid, TextField } from "@mui/material";
 import { Skeleton } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../store";
+import { getMovies } from "../store/moviesSlice";
+import type { Movie } from "../types/types";
 
 const MovieList = () => {
+  const dispatch = useDispatch();
+  const movies = useSelector((state: RootState) => state.movies.movies);
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
-  const filteredMovies = movies.filter((m: any) =>
+  const filteredMovies = movies.filter((m: Movie) =>
     m.title.toLowerCase().includes(query.toLowerCase())
   );
 
   useEffect(() => {
-    dispatch(getMovies(page) as any);
-  }, [dispatch, page]);
+    dispatch(getMovies(1));
+  }, [dispatch]);
 
   return (
     <>
@@ -42,8 +48,8 @@ const MovieList = () => {
           ))}
         </Grid>
       )}
-      <Button onClick={() => setPage((p) => p - 1)} disabled={page === 1}>Previous</Button>
-      <Button onClick={() => setPage((p) => p + 1)}>Next</Button>
+      <button onClick={() => setPage((p) => p - 1)} disabled={page === 1}>Previous</button>
+      <button onClick={() => setPage((p) => p + 1)}>Next</button>
     </>
   );
 };

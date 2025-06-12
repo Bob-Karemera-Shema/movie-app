@@ -1,23 +1,21 @@
-# 🎬 Movie Explorer App
+# Movie Explorer App
 
 A modern, responsive web application built with **React**, **TypeScript**, **Redux Toolkit**, and **MUI** to explore popular movies using The Movie Database (TMDB) API. The app displays movie details, allows search and pagination, and showcases clean UI and state management best practices.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🔍 **Search Popular Movies** by title
-- 📄 **View Movie Details** (overview, poster, etc.)
-- 🧭 **Client-Side Routing** with React Router
-- ♻️ **State Management** using Redux Toolkit
-- 🎨 **Responsive UI** styled with Material UI
-- ⏳ **Loading Skeletons** for better UX
-- 📄 **Pagination** through TMDB results
-- 📦 Modular folder structure and reusable components
+- Search Popular Movies by title
+- View Movie Details
+- Client-Side Routing with React Router
+- State Management using Redux Toolkit
+- Pagination through TMDB results
+- Modular folder structure and reusable components
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 | Tech               | Description                                |
 |--------------------|--------------------------------------------|
@@ -30,12 +28,12 @@ A modern, responsive web application built with **React**, **TypeScript**, **Red
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/movie-explorer-app.git
+git clone https://github.com/bob-karemera/movie-app.git
 cd movie-explorer-app
 ````
 
@@ -53,7 +51,7 @@ Create a `.env` file in the root directory:
 VITE_TMDB_API_KEY=your_tmdb_api_key_here
 ```
 
-> 🔐 Sign up and get your API key from [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
+> Sign up and get your API key from [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
 
 ### 4. Run the App Locally
 
@@ -65,7 +63,7 @@ The app will be available at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 src/
@@ -87,7 +85,7 @@ src/
 
 ---
 
-## 📡 API Reference
+## API Reference
 
 ### Get Popular Movies
 
@@ -114,18 +112,16 @@ Params:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 This starter does not yet include unit tests. You can integrate:
 
 * **Jest** and **React Testing Library** for component/unit tests
 * **Mock Service Worker (MSW)** to mock TMDB API responses
 
-Let me know if you want a test setup included.
-
 ---
 
-## 🧑‍💻 Contribution
+## Contribution
 
 Want to contribute?
 
@@ -142,9 +138,3 @@ Want to contribute?
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-## 🙌 Acknowledgements
-
-* [TMDB API](https://www.themoviedb.org/)
-* [Material UI](https://mui.com/)
-* [Redux Toolkit](https://redux-toolkit.js.org/)

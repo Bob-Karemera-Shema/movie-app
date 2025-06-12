@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import type { Movie } from "./MovieList";
+import MovieCard from "../components/MovieCard";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  const [movie, setMovie] = useState<any>(null);
+  const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
     fetch(
@@ -15,8 +17,7 @@ const MovieDetail = () => {
 
   return movie ? (
     <div>
-      <h1>{movie.title}</h1>
-      <p>{movie.overview}</p>
+      <MovieCard movie={movie} />
     </div>
   ) : (
     <p>Loading...</p>

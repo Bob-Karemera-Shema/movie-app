@@ -1,11 +1,22 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchPopularMovies } from "../api/tmdb";
+import type { Movie } from "../types/types";
 
-export const getMovies = createAsyncThunk("movies/fetch", fetchPopularMovies);
+interface MovieState {
+  movies: Movie[];
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+}
+
+const initialState: MovieState = {
+  movies: [],
+  status: 'idle'
+}
+
+export const getMovies = createAsyncThunk<Movie[], number, { rejectValue: string }>("movies/fetch", fetchPopularMovies);
 
 const moviesSlice = createSlice({
   name: "movies",
-  initialState: { movies: [], status: "idle" },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -13,7 +24,7 @@ const moviesSlice = createSlice({
         state.status = "loading";
       })
       .addCase(getMovies.fulfilled, (state, action) => {
-        state.movies = action.payload.results;
+        state.movies = action.payload;
         state.status = "succeeded";
       })
       .addCase(getMovies.rejected, (state) => {
