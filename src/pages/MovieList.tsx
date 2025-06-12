@@ -4,9 +4,14 @@ import { Grid, TextField } from "@mui/material";
 
 const MovieList = () => {
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
   const filteredMovies = movies.filter((m: any) =>
     m.title.toLowerCase().includes(query.toLowerCase())
   );
+
+  useEffect(() => {
+    dispatch(getMovies(page) as any);
+  }, [dispatch, page]);
 
   return (
     <>
@@ -25,6 +30,8 @@ const MovieList = () => {
           </Grid>
         ))}
       </Grid>
+      <Button onClick={() => setPage((p) => p - 1)} disabled={page === 1}>Previous</Button>
+      <Button onClick={() => setPage((p) => p + 1)}>Next</Button>
     </>
   );
 };
